@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/15 13:40:35 by vifonne           #+#    #+#             */
-/*   Updated: 2018/11/16 09:15:00 by mabouce          ###   ########.fr       */
+/*   Updated: 2018/11/16 09:23:06 by mabouce          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ char	*ft_set_in_one_line(char *str)
 	return (s1);
 }
 
-void	ft_parsing(int ac, char **av)
+t_tetri		*ft_parsing(int ac, char **av)
 {
 	char	**tetri;
 	char	**tetri_base;
@@ -144,10 +144,5 @@ void	ft_parsing(int ac, char **av)
 		}
 		i++;
 	}
-	match = -1;
-	while (++match < 19)
-	{
-		ft_putnbr(stock_tetri->i[match]);
-		ft_putchar('\n');
-	}
+	return(stock_tetri);
 }
