@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/15 13:41:41 by vifonne           #+#    #+#             */
-/*   Updated: 2018/11/16 10:51:15 by mabouce          ###   ########.fr       */
+/*   Updated: 2018/11/16 11:10:02 by mabouce          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,10 @@ typedef struct		s_tetri
 	int				tab[19];
 }					t_tetri;
 
+void				ft_print_square(int **square);
+
 void				ft_resolve(t_tetri *stock_tetri);
+void				ft_set_tab_point(int **square, int square_size);
 
 int					ft_count_min_square(t_tetri *stock_tetri);
 int					ft_count_min_square_y_min(t_tetri *stock_tetri);
