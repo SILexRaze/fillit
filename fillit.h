@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/15 13:41:41 by vifonne           #+#    #+#             */
-/*   Updated: 2018/11/16 11:10:02 by mabouce          ###   ########.fr       */
+/*   Updated: 2018/11/16 13:32:18 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,29 +18,32 @@
 #include <fcntl.h>
 
 
-typedef struct		s_tetri
+typedef struct	s_tetri
 {
-	int				tab[19];
-}					t_tetri;
+	int			tab[19];
+}				t_tetri;
 
-void				ft_print_square(int **square);
+void			ft_print_square(int **square);
 
-void				ft_resolve(t_tetri *stock_tetri);
-void				ft_set_tab_point(int **square, int square_size);
+void			ft_resolve(t_tetri *stock_tetri);
+void			ft_set_tab_point(int **square, int square_size);
 
-int					ft_count_min_square(t_tetri *stock_tetri);
-int					ft_count_min_square_y_min(t_tetri *stock_tetri);
+int				ft_count_min_square(t_tetri *stock_tetri);
+int				ft_count_min_square_y_min(t_tetri *stock_tetri);
 
-t_tetri				*ft_parsing(int ac, char **av);
-char				*ft_read_file(char *filename);
-char				*ft_swap_nl_to_x(char *str);
-void				ft_cut_to_tetri(char **tetri);
-char				*ft_set_in_one_line(char *str);
+t_tetri			*ft_parsing(int ac, char **av);
+char			*ft_read_file(char *filename);
+char			*ft_swap_nl_to_x(char *str);
+void			ft_cut_to_tetri(char **tetri);
+char			*ft_set_in_one_line(char *str);
 
-void				ft_set_stock_to_zero(t_tetri *stock_tetri);
+void			ft_set_stock_to_zero(t_tetri *stock_tetri);
 
-void				ft_error(void);
+void			ft_error(void);
 
-char				**ft_init_tetri_base(void);
+char			**ft_init_tetri_base(void);
 
+int				ft_ischar(char c);
+int				ft_check_char(char *str);
+int				ft_check_input(char *str);
 #endif

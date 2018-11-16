@@ -6,17 +6,11 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/15 13:40:35 by vifonne           #+#    #+#             */
-/*   Updated: 2018/11/16 12:52:25 by vifonne          ###   ########.fr       */
+/*   Updated: 2018/11/16 17:53:11 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-
-
-
-
-
-
 
 
 #include <stdio.h>
@@ -38,11 +32,11 @@ char	*ft_read_file(char *filename)
 	{
 		if (ret < 0 || i > 129)
 			ft_error();
-			if (!(tetri = ft_strdjoin(tetri, ft_strdjoin(line, "\n"))))
+		if (!(tetri = ft_strdjoin(tetri, ft_strdjoin(line, "\n"))))
 			ft_error();
 		i++;
 	}
-	if !(ft_check_input(tetri))
+	if (!ft_check_input(tetri))
 		ft_error();
 	return (ft_swap_nl_to_x(tetri));
 }
@@ -62,9 +56,9 @@ char	*ft_swap_nl_to_x(char *str)
 }
 // A FAIRE -> vifonne
 /*void	ft_input_check(char *tetri)
-{
-	
-}*/
+  {
+
+  }*/
 
 void	ft_cut_to_tetri(char **tetri)
 {
@@ -121,7 +115,7 @@ t_tetri		*ft_parsing(int ac, char **av)
 	ft_set_stock_to_zero(stock_tetri);
 	if (ac != 2)
 		ft_error();
-//	ft_input_check(tetri);
+	//	ft_input_check(tetri);
 	tetri = ft_strsplit(ft_set_in_one_line(ft_read_file(av[1])), 'x');
 	ft_cut_to_tetri(tetri);
 	tetri_base = ft_init_tetri_base();

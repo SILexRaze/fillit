@@ -6,7 +6,7 @@
 #    By: vifonne <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 19:05:19 by vifonne           #+#    #+#              #
-#    Updated: 2018/11/16 11:10:15 by mabouce          ###   ########.fr        #
+#    Updated: 2018/11/16 13:20:26 by vifonne          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ SRCS		=		main.c					\
 					ft_resolve.c			\
 					ft_count_min_square.c	\
 					ft_print_square.c		\
+					ft_check.c
 
 INCLUDES	=		includes/
 
