@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/15 13:40:35 by vifonne           #+#    #+#             */
-/*   Updated: 2018/11/16 10:11:02 by mabouce          ###   ########.fr       */
+/*   Updated: 2018/11/16 12:52:25 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ char	*ft_read_file(char *filename)
 			ft_error();
 		i++;
 	}
+	if !(ft_check_input(tetri))
+		ft_error();
 	return (ft_swap_nl_to_x(tetri));
 }
 

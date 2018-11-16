@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@41.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/15 14:21:25 by vifonne           #+#    #+#             */
-/*   Updated: 2018/11/16 10:10:30 by mabouce          ###   ########.fr       */
+/*   Updated: 2018/11/16 12:51:26 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,16 @@ int		main(int ac, char **av)
 	int		i;
 
 	stock_tetri = ft_parsing(ac, av);
-
+	
 
 //affichage des matchs
-	i = -1;
+/*	i = -1;
 	while (++i < 19)
 	{
 		ft_putnbr(stock_tetri->tab[i]);
 		ft_putchar('\n');
 	}
-		ft_putchar('\n');
+		ft_putchar('\n');*/
 //a remove
 	ft_resolve(stock_tetri);
 	return (0);
