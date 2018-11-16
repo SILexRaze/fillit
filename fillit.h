@@ -6,23 +6,25 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/15 13:41:41 by vifonne           #+#    #+#             */
-/*   Updated: 2018/11/15 14:31:51 by vifonne          ###   ########.fr       */
+/*   Updated: 2018/11/15 17:41:50 by mabouce          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FILLIT_H
 # define FILLIT_H
+
 # include "libft/libft.h"
 # include <stdlib.h>
-typedef struct		s_nshapes
+#include <fcntl.h>
+
+
+typedef struct		s_tetri
 {
-	int				i[2];
-	int				j[4];
-	int				l[4];
-	int				s[2];
-	int				t[4];
-	int				z[2];
-	int				o;
-}					t_nshapes;
-char				**ft_init_db(void);
+	int				i[19];
+}					t_tetri;
+
+void				ft_parsing(int ac, char **av);
+void				ft_error(void);
+char				**ft_init_tetri_base(void);
+char				*ft_parse_nl(char *str);
 #endif

@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 22:37:39 by vifonne           #+#    #+#             */
-/*   Updated: 2018/11/08 15:00:46 by vifonne          ###   ########.fr       */
+/*   Updated: 2018/11/15 17:32:10 by mabouce          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,5 @@
 void	ft_putstr(char const *s)
 {
 	if (s)
-		while (*s)
-			ft_putchar(*s++);
+		write(1, s, ft_strlen(s));
 }

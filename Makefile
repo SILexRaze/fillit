@@ -6,15 +6,22 @@
 #    By: vifonne <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 19:05:19 by vifonne           #+#    #+#              #
-#    Updated: 2018/11/15 14:23:34 by vifonne          ###   ########.fr        #
+#    Updated: 2018/11/15 16:12:11 by mabouce          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS		=		main.c	parsing.c
+SRCS		=		main.c			\
+					parsing.c		\
+					ft_error.c	\
+
 INCLUDES	=		includes/
+
 OBJ			=		$(SRCS:.c=.o)
+
 CC			=		gcc -Wall -Wextra -Werror
-NAME		=		test
+
+NAME		=		fillit
+
 _RED=$'\x1b[31m$'
 _GREEN=$'\x1b[32m$'
 _YELLOW=$'\x1b[33m$'
@@ -24,7 +31,7 @@ _WHITE=$'\x1b[37m$'
 
 all:	$(NAME)
 
-$(NAME):
+$(NAME): $(OBJ) $(SRCS)
 	@echo "$(_CYAN)"
 	make -C libft/
 	@echo "$(_YELLOW)"

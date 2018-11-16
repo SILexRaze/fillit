@@ -1,19 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_print_tab.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vifonne <marvin@41.fr>                     +#+  +:+       +#+        */
+/*   By: mabouce <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/15 14:21:25 by vifonne           #+#    #+#             */
-/*   Updated: 2018/11/15 16:13:30 by mabouce          ###   ########.fr       */
+/*   Created: 2018/11/09 17:27:44 by mabouce           #+#    #+#             */
+/*   Updated: 2018/11/15 17:31:27 by mabouce          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "libft.h"
 
-int		main(int ac, char **av)
+void	ft_print_tab_str(char **tab)
 {
-	ft_parsing(ac, av);
-	return (0);
+	long long i;
+
+	i = 0;
+	while (tab[i])
+	{
+		ft_putstr(tab[i]);
+		ft_putchar('\n');
+		ft_putchar('\n');
+		i++;
+	}
 }

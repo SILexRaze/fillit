@@ -6,19 +6,29 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/05 17:49:46 by vifonne           #+#    #+#             */
-/*   Updated: 2018/11/15 14:24:41 by vifonne          ###   ########.fr       */
+/*   Updated: 2018/11/15 17:58:35 by mabouce          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
+
 # include <string.h>
+# include <stdlib.h>
+# include <unistd.h>
+
+# define BUFF_SIZE 5
 
 typedef struct		s_list
 {
 	void			*data;
 	struct s_list	*next;
 }					t_list;
+
+void				ft_print_tab_int(int *tab);
+void				ft_print_tab_str(char **tab);
+int					get_next_line(const int fd, char **line);
+
 void				ft_list_pushback(t_list **begin_list, void *data);
 void				ft_list_pushfront(t_list **begin_list, void *data);
 void				ft_memdel(void **ap);
@@ -75,4 +85,5 @@ int					ft_strequ(char const *s1, char const *s2);
 int					ft_strnequ(char const *s1, char const *s2, size_t n);
 int					ft_atoi(const char *str);
 t_list				*ft_create_elem(void *data);
+
 #endif
