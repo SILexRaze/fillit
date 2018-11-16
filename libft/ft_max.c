@@ -1,22 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_set_stock_to_zero.c                             :+:      :+:    :+:   */
+/*   ft_max.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mabouce <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/16 09:13:16 by mabouce           #+#    #+#             */
-/*   Updated: 2018/11/16 10:11:18 by mabouce          ###   ########.fr       */
+/*   Created: 2018/11/16 10:09:05 by mabouce           #+#    #+#             */
+/*   Updated: 2018/11/16 10:09:31 by mabouce          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "libft.h"
 
-void	ft_set_stock_to_zero(t_tetri *stock_tetri)
+int		ft_max(int a, int b)
 {
-	int	i;
-
-	i = 19;
-	while (i-- >= 0)
-		stock_tetri->tab[i] = 0;
+	if (a > b)
+		return (a);
+	return (b);
 }

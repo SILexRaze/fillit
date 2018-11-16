@@ -6,7 +6,7 @@
 #    By: vifonne <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 19:05:19 by vifonne           #+#    #+#              #
-#    Updated: 2018/11/15 17:57:49 by mabouce          ###   ########.fr        #
+#    Updated: 2018/11/16 10:09:41 by mabouce          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ SRCS		=		ft_memcpy.c			ft_bzero.c			ft_memset.c		\
 					ft_putnbr_fd.c		ft_atoi.c			ft_strsplit.c	\
 					ft_itoa.c			ft_strdjoin.c		ft_create_elem.c\
 					ft_list_pushback.c	ft_list_pushfront.c get_next_line.c	\
-					ft_print_tab_str.c	ft_print_tab_int.c
+					ft_print_tab_str.c	ft_print_tab_int.c	ft_max.c		\
 
 OBJ			=		$(SRCS:.c=.o)
 CC			=		gcc -Wall -Wextra -Werror

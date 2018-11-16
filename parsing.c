@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/15 13:40:35 by vifonne           #+#    #+#             */
-/*   Updated: 2018/11/16 09:23:06 by mabouce          ###   ########.fr       */
+/*   Updated: 2018/11/16 10:11:02 by mabouce          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,7 +133,7 @@ t_tetri		*ft_parsing(int ac, char **av)
 			if (ft_strequ(tetri[i], tetri_base[j]))
 			{
 				match = 1;
-				stock_tetri->i[j]++;
+				stock_tetri->tab[j]++;
 				break ;
 			}
 			j++;

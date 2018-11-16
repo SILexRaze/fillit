@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/15 13:41:41 by vifonne           #+#    #+#             */
-/*   Updated: 2018/11/16 09:21:03 by mabouce          ###   ########.fr       */
+/*   Updated: 2018/11/16 10:51:15 by mabouce          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,13 @@
 
 typedef struct		s_tetri
 {
-	int				i[19];
+	int				tab[19];
 }					t_tetri;
+
+void				ft_resolve(t_tetri *stock_tetri);
+
+int					ft_count_min_square(t_tetri *stock_tetri);
+int					ft_count_min_square_y_min(t_tetri *stock_tetri);
 
 t_tetri				*ft_parsing(int ac, char **av);
 char				*ft_read_file(char *filename);
