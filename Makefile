@@ -6,13 +6,15 @@
 #    By: vifonne <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 19:05:19 by vifonne           #+#    #+#              #
-#    Updated: 2018/11/15 16:12:11 by mabouce          ###   ########.fr        #
+#    Updated: 2018/11/16 09:14:00 by mabouce          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS		=		main.c			\
-					parsing.c		\
-					ft_error.c	\
+SRCS		=		main.c					\
+					parsing.c				\
+					ft_error.c				\
+					ft_init_tetri_base.c	\
+					ft_set_stock_to_zero.c	\
 
 INCLUDES	=		includes/
 
