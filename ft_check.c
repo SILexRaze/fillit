@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 12:15:34 by vifonne           #+#    #+#             */
-/*   Updated: 2018/11/16 18:21:26 by vifonne          ###   ########.fr       */
+/*   Updated: 2018/11/19 14:52:42 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,15 +41,26 @@ int		ft_check_input(char *str)
 	int	nb_line;
 
 	i = 0;
-	j = 1;
 	nb_line = 0;
 	if (!ft_check_char(str))
 		ft_error();
-	while (str[i])
+	while (str[i + 1])
 	{
-		if (str[i] == '\n')
-			nb_line++;
-		j++;
+		j = 0;
+		while (str[i + 1] && (str[i] == '.' || str[i] == '#'))
+		{
+			j++;
+			i++;
+		}
+		if (j > 4)
+			ft_error();
+		else
+		{
+			if (str[i] == '\n' && str[i + 1] == '\n');
+				nb_line++;
+			else
+				ft_error();
+		}
 		i++;
 	}
 	return (1);
