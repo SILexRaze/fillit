@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_square.c                                  :+:      :+:    :+:   */
+/*   ft_sqrt.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mabouce <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/16 11:05:26 by mabouce           #+#    #+#             */
-/*   Updated: 2018/11/20 14:21:23 by vifonne          ###   ########.fr       */
+/*   Created: 2018/11/05 14:49:13 by vifonne           #+#    #+#             */
+/*   Updated: 2018/11/20 15:11:15 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
-
-void	ft_print_square(char **square)
+int	ft_sqrt(int nb)
 {
-	int i;
+	int	i;
 
-	i = 0;
-	while (square[i])
-	{
-		ft_putnbr(i);
-		ft_putstr(" : ");
-		ft_putendl(square[i]);
+	i = 1;
+	if (nb <= 0 || nb > 2147395600)
+		return (0);
+	while (i * i < nb)
 		i++;
-	}
+	if (i * i == nb)
+		return (i);
+	else
+		return (i + 1);
 }

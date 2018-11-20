@@ -6,115 +6,121 @@
 /*   By: mabouce <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 09:27:27 by mabouce           #+#    #+#             */
-/*   Updated: 2018/11/20 09:14:18 by mabouce          ###   ########.fr       */
+/*   Updated: 2018/11/20 18:21:53 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-void	ft_set_tab_point(char **square, int square_size)
+#include <stdio.h>
+
+int		ft_count_tetri(t_tetri *stock_tetri)
 {
 	int i;
-	int j;
+	int count;
 
 	i = 0;
-	square[square_size] = NULL;
-	while (i < square_size)
-	{
-		j = 0;
-		while (j < square_size)
-		{
-			square[i][j] = '.';
-			j++;
-		}
-		square[i][j] = 0;
-		i++;
-	}
-}
-
-int		ft_put_tetri_in_tab(t_tetri *stock_tetri, char **square, int tetrinum,
-		int x, int y)
-{
-
-		
-}
-
-int		ft_resolve_algo(t_tetri *stock_tetri, char **square)
-{
-	int i;
-	int x;
-	int y;
-	int	tetrinum;
-	
-	
-	i = 0;
-	while (i < 10)
-	{
-		ft_putchar('[');
-		ft_putnbr(stock_tetri->tab[0][i]);
-		ft_putchar(']');
-		ft_putchar(' ');
-		i++;
-	}
-	ft_putchar('\n');
-	ft_putchar('\n');
-	i = 0;
+	count = 0;
 	while (i < 19)
 	{
-		ft_putchar('[');
-		ft_putnbr(stock_tetri->tab[1][i]);
-		ft_putchar(']');
-		ft_putchar(' ');
+		count += stock_tetri->tab[1][i];
 		i++;
 	}
-	ft_putchar('\n');
+	return (count);
+}
 
-	x = 0;
-	y = 0;
-	if (!(ft_put_tetri_in_tab(stock_tetri, square, order, x, y)))
-		return (0);
+char	**ft_set_square(t_tetri *stock_tetri, int sizeplus)
+{
+	char **square;
+	int	edge;
+	int i;
 
-	return (1);
+	i = 0;
+	edge = 0;
+	while (i < 19)
+	{
+		edge = edge + 4 * stock_tetri->tab[1][i];
+		i++;
+	}
+	edge = ft_sqrt(edge) + sizeplus;
+
+	if (!(square = (char **)malloc(sizeof(char *) * (sizeplus + 1))))
+		ft_error();
+	square[sizeplus] = 0;
+	i = 0;
+	while (i < sizeplus)
+	{
+		if (!(square[i] = (char *)malloc(sizeof(char) * (sizeplus + 1))))
+			ft_error();
+		square[i][sizeplus] = 0;
+		i++;
+	}
+	ft_set_tab_point(square, sizeplus);
+	return (square);
+}
+
+int		ft_backtrack(char **square, t_tetri *stock_tetri, int x, int y)
+{
+	static int	setetri;
+
+	if (setetri == ft_count_tetri(stock_tetri))
+	{
+		ft_putstr("\n\nWIIIIIIIII\n\n");
+		return (1);
+	}
+	while (square[y])
+	{
+		x = 0;
+		while (square[y][x])
+		{
+
+			// VERIF SI TU PEUX POSER LA PIECE ON LA POSE, SI TU PEUX TU LA POSER -> RECURSIVITE
+			// SI TU PEUX, TU RAPPELLES LA FONCTION BACKTRACK --> IF (BACKTRACK == 1) RETURN 1
+			// SI CA RETOURNE PAS HEEEIN, ENLEVER LA PIECE ET ESSAYER UNE AUTRE COMBINAISON
+			/*
+			 *	if (is_valid x y)
+			 *		put shape
+			 *		if (backtrack autre piece)
+			 *			return 1
+			 *		else
+			 *			rm_shape;
+			 *		changement de position (LEULEU)
+			 *
+			 *
+			 *
+			 */
+			if (!(ft_put_tetri_in_sq(square, x, y, stock_tetri->tab[0][setetri])))
+			{
+				ft_del_tetri_in_sq(square, setetri + 65);
+			}
+			else
+			{
+				setetri++;
+				if (ft_backtrack(square, stock_tetri, 0, 0))
+					return (1);
+			}
+			x++;
+		}
+		y++;
+	}
+	setetri--;
+	return (0);
 }
 
 void	ft_resolve(t_tetri *stock_tetri)
 {
-	int square_size;
 	char **square;
 	int	i;
+	int		sizeplus;
 
-	square_size = ft_count_min_square(stock_tetri);
-	if (!(square = (char **)malloc(sizeof(char *) * (square_size + 1))))
-		ft_error();
-	square[square_size] = 0;
+	sizeplus = 0;
+	square = ft_set_square(stock_tetri, sizeplus);
 	i = 0;
-	while (i < square_size)
+	while (!(ft_backtrack(square, stock_tetri, 0, 0)))
 	{
-		if (!(square[i] = (char *)malloc(sizeof(char) * (square_size + 1))))
-			ft_error();
-		square[i][square_size] = 0;
-		i++;
+		sizeplus++;
+		square = ft_set_square(stock_tetri, sizeplus);
 	}
-	ft_set_tab_point(square, square_size);
-	ft_putstr("\nsquare_size : ");
-	ft_putnbr(square_size);
-	ft_putstr("\n");
-	while (!(ft_resolve_algo(stock_tetri, square)))
-	{
-		ft_print_square(square);
-		square_size++;
-		if (!(square = (char **)malloc(sizeof(char *) * (square_size + 1))))
-			ft_error();
-		square[square_size] = 0;
-		i = 0;
-		while (i < square_size)
-		{
-			if (!(square[i] = (char *)malloc(sizeof(char) * (square_size + 1))))
-				ft_error();
-			square[i][square_size] = 0;
-			i++;
-		}
-		ft_set_tab_point(square, square_size);
-	}
-//		ft_print_square(square);
+	ft_print_square(square);
+	ft_putchar('\n');
 }

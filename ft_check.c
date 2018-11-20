@@ -6,47 +6,78 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 12:15:34 by vifonne           #+#    #+#             */
-/*   Updated: 2018/11/20 08:04:53 by mabouce          ###   ########.fr       */
+/*   Updated: 2018/11/20 11:45:42 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
+int		ft_check_line(char *str, int nb_tetri, int nb_line)
+{
+	if (nb_tetri > 26)
+		ft_error();
+	if (*str == '\n' && *(str + 1) == '\n' && nb_line == 4)
+		return (1);
+	if (*str == '\n' && nb_line > 4)
+		ft_error();
+	else if (*str == '\n')
+		return (2);
+	else
+		ft_error();
+	return (0);
+}
+
 int		ft_check_input(char *str)
 {
-	int	i;
 	int j;
+	int ret;
 	int	nb_line;
 	int	nb_tetri;
 
-	i = 0;
 	nb_tetri = 0;
-	while (str[i + 1])
+	while (*(str + 1))
 	{
 		j = 0;
 		nb_line = 0;
-		while (str[i] && (str[i] == '.' || str[i] == '#'))
-		{
+		while (*str++ && (*str == '.' || *str == '#'))
 			j++;
-			i++;
-		}
 		if (j > 4)
 			ft_error();
 		else
 		{
-			if (str[i] == '\n' && str[i + 1] == '\n' && nb_line == 4)
-			{
+			ret = ft_check_line(str, nb_tetri, nb_line);
+			if (ret == 1 && *str++)
 				nb_tetri++;
-				i++;
-			}
-			if (str[i] == '\n' && nb_line > 4)
-				ft_error();
-			else if (str[i] == '\n')
+			else if (ret == 2)
 				nb_line++;
-			else
-				ft_error();
 		}
-		i++;
+		str++;
 	}
 	return (1);
 }
+
+/*t_tetri	*ft_check_match(char *tetri, char **tetri_base, t_tetri *stock_tetri)
+{
+	int		set_order;
+	int		j;
+	int		match;
+
+	set_order = 0;
+	j = 0;
+	match = 0;
+	while (tetri_base[j])
+	{
+		if (ft_strequ(tetri, tetri_base[j]))
+		{
+			match = 1;
+			stock_tetri->tab[0][set_order] = j;
+			stock_tetri->tab[1][j]++;
+			set_order++;
+			break ;
+		}
+		j++;
+	}
+	if (match != 1)
+		ft_error();
+	return (stock_tetri);
+}*/

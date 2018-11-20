@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@41.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/15 14:21:25 by vifonne           #+#    #+#             */
-/*   Updated: 2018/11/20 08:09:03 by mabouce          ###   ########.fr       */
+/*   Updated: 2018/11/20 15:15:04 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,11 @@ int		main(int ac, char **av)
 {
 	t_tetri	*stock_tetri;
 
-	stock_tetri = ft_parsing(ac, av);
-
-
+	if (!(stock_tetri = (t_tetri *)malloc(sizeof(t_tetri))))
+		ft_error();
+	if (ac != 2)
+		ft_error();
+	stock_tetri = ft_parsing(av, stock_tetri);
 	ft_resolve(stock_tetri);
 	return (0);
 }

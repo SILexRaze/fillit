@@ -6,7 +6,7 @@
 /*   By: mabouce <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 10:49:40 by mabouce           #+#    #+#             */
-/*   Updated: 2018/11/20 08:20:09 by mabouce          ###   ########.fr       */
+/*   Updated: 2018/11/20 14:41:50 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,7 @@ int		ft_count_min_square_y_min(t_tetri *stock_tetri)
 		+ stock_tetri->tab[1][16] * 3 + stock_tetri->tab[1][18] * 3;
 	y_min += stock_tetri->tab[1][0] * 1;
 	y_min += stock_tetri->tab[1][1] * 4;
-
-	return (y_min);
+	return (1);
 }
 
 int		ft_count_min_square(t_tetri *stock_tetri)
@@ -50,5 +49,5 @@ int		ft_count_min_square(t_tetri *stock_tetri)
 	x_min += stock_tetri->tab[1][0] * 4;
 	x_min += stock_tetri->tab[1][1] * 1;
 	y_min = ft_count_min_square_y_min(stock_tetri);
-	return (ft_max(x_min, y_min));
+	return (1);
 }

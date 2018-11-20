@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_init_tetri_base.c                               :+:      :+:    :+:   */
+/*   ft_init.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mabouce <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/16 09:03:58 by mabouce           #+#    #+#             */
-/*   Updated: 2018/11/20 08:45:55 by mabouce          ###   ########.fr       */
+/*   Created: 2018/11/20 13:17:45 by vifonne           #+#    #+#             */
+/*   Updated: 2018/11/20 18:21:56 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,24 @@ char	**ft_init_tetri_base(void)
 	tab[18] = "#..##..#";
 	tab[19] = NULL;
 	return (tab);
+}
+
+void	ft_set_tab_point(char **square, int square_size)
+{
+	int i;
+	int j;
+
+	i = 0;
+	square[square_size] = NULL;
+	while (i < square_size)
+	{
+		j = 0;
+		while (j < square_size)
+		{
+			square[i][j] = '.';
+			j++;
+		}
+		square[i][j] = 0;
+		i++;
+	}
 }
