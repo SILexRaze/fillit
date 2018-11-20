@@ -6,7 +6,7 @@
 /*   By: mabouce <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 09:27:27 by mabouce           #+#    #+#             */
-/*   Updated: 2018/11/20 18:21:53 by vifonne          ###   ########.fr       */
+/*   Updated: 2018/11/20 18:50:13 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,18 +44,18 @@ char	**ft_set_square(t_tetri *stock_tetri, int sizeplus)
 	}
 	edge = ft_sqrt(edge) + sizeplus;
 
-	if (!(square = (char **)malloc(sizeof(char *) * (sizeplus + 1))))
+	if (!(square = (char **)malloc(sizeof(char *) * (edge + 1))))
 		ft_error();
-	square[sizeplus] = 0;
+	square[edge] = 0;
 	i = 0;
-	while (i < sizeplus)
+	while (i < edge)
 	{
-		if (!(square[i] = (char *)malloc(sizeof(char) * (sizeplus + 1))))
+		if (!(square[i] = (char *)malloc(sizeof(char) * (edge + 1))))
 			ft_error();
-		square[i][sizeplus] = 0;
+		square[i][edge] = 0;
 		i++;
 	}
-	ft_set_tab_point(square, sizeplus);
+	ft_set_tab_point(square, edge);
 	return (square);
 }
 
@@ -64,10 +64,7 @@ int		ft_backtrack(char **square, t_tetri *stock_tetri, int x, int y)
 	static int	setetri;
 
 	if (setetri == ft_count_tetri(stock_tetri))
-	{
-		ft_putstr("\n\nWIIIIIIIII\n\n");
 		return (1);
-	}
 	while (square[y])
 	{
 		x = 0;
@@ -89,10 +86,9 @@ int		ft_backtrack(char **square, t_tetri *stock_tetri, int x, int y)
 			 *
 			 *
 			 */
+			printf("setetri|%d|\n", stock_tetri->tab[0][setetri]);
 			if (!(ft_put_tetri_in_sq(square, x, y, stock_tetri->tab[0][setetri])))
-			{
 				ft_del_tetri_in_sq(square, setetri + 65);
-			}
 			else
 			{
 				setetri++;
@@ -103,7 +99,6 @@ int		ft_backtrack(char **square, t_tetri *stock_tetri, int x, int y)
 		}
 		y++;
 	}
-	setetri--;
 	return (0);
 }
 

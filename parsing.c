@@ -6,11 +6,12 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/15 13:40:35 by vifonne           #+#    #+#             */
-/*   Updated: 2018/11/20 12:56:59 by vifonne          ###   ########.fr       */
+/*   Updated: 2018/11/20 18:53:34 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
+#include <stdio.h>
 
 char		*ft_read_file(char *filename)
 {
@@ -118,6 +119,7 @@ t_tetri		*ft_parsing(char **av, t_tetri *stock_tetri)
 			{
 				match = 1;
 				stock_tetri->tab[0][set_order] = j;
+				printf("j=|%d|\n", j);
 				stock_tetri->tab[1][j]++;
 				set_order++;
 				break ;
