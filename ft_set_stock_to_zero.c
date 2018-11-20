@@ -6,7 +6,7 @@
 /*   By: mabouce <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 09:13:16 by mabouce           #+#    #+#             */
-/*   Updated: 2018/11/16 10:11:18 by mabouce          ###   ########.fr       */
+/*   Updated: 2018/11/20 08:15:47 by mabouce          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,8 @@ void	ft_set_stock_to_zero(t_tetri *stock_tetri)
 
 	i = 19;
 	while (i-- >= 0)
-		stock_tetri->tab[i] = 0;
+	{
+		stock_tetri->tab[0][i] = 0;
+		stock_tetri->tab[1][i] = 0;
+	}
 }

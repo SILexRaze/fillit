@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/15 13:40:35 by vifonne           #+#    #+#             */
-/*   Updated: 2018/11/19 17:33:20 by vifonne          ###   ########.fr       */
+/*   Updated: 2018/11/20 08:46:19 by mabouce          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,7 @@ t_tetri		*ft_parsing(int ac, char **av)
 	int		match;
 	int		i;
 	int		j;
+	int		set_order;
 
 	if (!(stock_tetri = malloc(sizeof(t_tetri))))
 		ft_error();
@@ -120,6 +121,7 @@ t_tetri		*ft_parsing(int ac, char **av)
 	ft_cut_to_tetri(tetri);
 	tetri_base = ft_init_tetri_base();
 	i = 0;
+	set_order = 0;
 	while (tetri[i])
 	{
 		match = 0;
@@ -129,7 +131,9 @@ t_tetri		*ft_parsing(int ac, char **av)
 			if (ft_strequ(tetri[i], tetri_base[j]))
 			{
 				match = 1;
-				stock_tetri->tab[j]++;
+				stock_tetri->tab[0][set_order] = j;
+				stock_tetri->tab[1][j]++;
+				set_order++;
 				break ;
 			}
 			j++;
