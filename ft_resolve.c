@@ -6,7 +6,7 @@
 /*   By: mabouce <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 09:27:27 by mabouce           #+#    #+#             */
-/*   Updated: 2018/11/20 08:57:59 by mabouce          ###   ########.fr       */
+/*   Updated: 2018/11/20 09:14:18 by mabouce          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,20 @@ void	ft_set_tab_point(char **square, int square_size)
 	}
 }
 
+int		ft_put_tetri_in_tab(t_tetri *stock_tetri, char **square, int tetrinum,
+		int x, int y)
+{
+
+		
+}
+
 int		ft_resolve_algo(t_tetri *stock_tetri, char **square)
 {
 	int i;
 	int x;
 	int y;
+	int	tetrinum;
+	
 	
 	i = 0;
 	while (i < 10)
@@ -62,8 +71,9 @@ int		ft_resolve_algo(t_tetri *stock_tetri, char **square)
 
 	x = 0;
 	y = 0;
+	if (!(ft_put_tetri_in_tab(stock_tetri, square, order, x, y)))
+		return (0);
 
-	(void)square;
 	return (1);
 }
 
