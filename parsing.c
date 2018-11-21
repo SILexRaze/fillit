@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/15 13:40:35 by vifonne           #+#    #+#             */
-/*   Updated: 2018/11/21 21:40:37 by vifonne          ###   ########.fr       */
+/*   Updated: 2018/11/21 22:04:26 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,16 +55,18 @@ char		*ft_swap_nl_to_x(char *str)
 
 void		ft_cut_to_tetri(char **tetri)
 {
-	int	i;
-	int	j;
-	int	y;
+	int		i;
+	int		j;
+	int		y;
+	char	*tmp;
 
 	i = 0;
 	while (tetri[i])
 	{
-		/*ajouter free dup*/
+		tmp = tetri[i];
 		if (!(tetri[i] = ft_strdup(ft_strchr(tetri[i], '#'))))
 			ft_error();
+		ft_strdel(&tmp);
 		j = 0;
 		y = 0;
 		while (tetri[i][j])
@@ -91,6 +93,7 @@ char		*ft_set_in_one_line(char *str)
 	tab = ft_strsplit(str, '\n');
 	while (*tab)
 		s1 = ft_strdjoin(s1, *tab++);
+	ft_sqdel(tab);
 	return (s1);
 }
 

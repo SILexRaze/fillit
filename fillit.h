@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/15 13:41:41 by vifonne           #+#    #+#             */
-/*   Updated: 2018/11/21 21:41:11 by vifonne          ###   ########.fr       */
+/*   Updated: 2018/11/21 21:52:31 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void			ft_resolve(t_tetri *stock_tetri);
 void			ft_cut_to_tetri(char **tetri);
 void			ft_set_stock_to_zero(t_tetri *stock_tetri);
 void			ft_error(void);
+void			ft_sqdel(char **square);
 void			ft_set_tab_point(char **square, int square_size);
 
 char			*ft_read_file(char *filename);

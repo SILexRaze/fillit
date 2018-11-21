@@ -6,7 +6,7 @@
 #    By: vifonne <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 19:05:19 by vifonne           #+#    #+#              #
-#    Updated: 2018/11/21 21:38:53 by vifonne          ###   ########.fr        #
+#    Updated: 2018/11/21 22:09:34 by vifonne          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,7 @@ $(NAME): $(OBJ) $(SRCS)
 	@echo "$(_CYAN)"
 	make -C libft/
 	@echo "$(_YELLOW)"
-	$(CC) $(SRCS) -o $(NAME) -I libft/includes -I $(INCLUDES) -L libft/ -lft
+	$(CC) $(SRCS) -o $(NAME) -I libft/includes -I $(INCLUDES) -L libft/ -lft -g
 
 clean:
 	@echo "$(_RED)"

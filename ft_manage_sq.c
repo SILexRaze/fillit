@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 13:28:09 by vifonne           #+#    #+#             */
-/*   Updated: 2018/11/21 21:39:46 by vifonne          ###   ########.fr       */
+/*   Updated: 2018/11/21 22:15:46 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ int		ft_put_tetri_in_sq(char **square, int x, int y, int index, int edge, int pc
 	int			i;
 
 	i = 0;
-	base = ft_init_tetri_base_for_put();
+	if (!(base = ft_init_tetri_base_for_put()))
+		ft_error();
 	while (base[index][i] && y < edge && x >= 0)
 	{
 		if (base[index][i] == '#' && square[y][x] == '.')
@@ -27,11 +28,15 @@ int		ft_put_tetri_in_sq(char **square, int x, int y, int index, int edge, int pc
 			x++;
 		}
 		else if (base[index][i] == '#' && square[y][x] != '.')
+		{
 			return (0);
+		}
 		else if (base[index][i] == '-')
 		{
 			if (x - 1 < 0)
+			{
 				return (0);
+			}
 			x--;
 		}
 		else if (base[index][i] == '+' && y + 1 < edge)
@@ -40,7 +45,7 @@ int		ft_put_tetri_in_sq(char **square, int x, int y, int index, int edge, int pc
 	}
 	return (1);
 }
-	
+
 int		ft_del_tetri_in_sq(char **square, char c)
 {
 	int	i;
@@ -59,4 +64,19 @@ int		ft_del_tetri_in_sq(char **square, char c)
 		i++;
 	}
 	return (1);
+}
+
+void	ft_sqdel(char **square)
+{
+	int	i;
+
+	i = 0;
+	if (square)
+	{
+		while (square[i])
+		{
+			ft_strdel(&square[i]);
+			i++;
+		}
+	}
 }

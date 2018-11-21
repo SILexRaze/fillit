@@ -6,7 +6,7 @@
 /*   By: mabouce <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 09:27:27 by mabouce           #+#    #+#             */
-/*   Updated: 2018/11/21 21:43:22 by vifonne          ###   ########.fr       */
+/*   Updated: 2018/11/21 22:10:52 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int		ft_backtrack(char **square, t_tetri *stock_tetri,
 		{
 			if (ft_put_tetri_in_sq(square, x, y, stock_tetri->tab[0][pcs], edge, pcs))
 			{
-				if(ft_backtrack(square, stock_tetri, 0, 0, pcs + 1, edge))
+				if (ft_backtrack(square, stock_tetri, 0, 0, pcs + 1, edge))
 					return (1);
 			}
 			ft_del_tetri_in_sq(square, pcs +'A');
@@ -102,7 +102,9 @@ void	ft_resolve(t_tetri *stock_tetri)
 	while (!(ft_backtrack(square, stock_tetri, 0, 0, 0, ft_calc_edge(stock_tetri, sizeplus))))
 	{
 		sizeplus++;
+		ft_sqdel(square);
 		square = ft_set_square(stock_tetri, sizeplus);
 	}
 	ft_print_square(square);
+	ft_sqdel(square);
 }
