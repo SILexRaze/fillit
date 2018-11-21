@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/15 13:40:35 by vifonne           #+#    #+#             */
-/*   Updated: 2018/11/20 18:53:34 by vifonne          ###   ########.fr       */
+/*   Updated: 2018/11/21 10:10:05 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,7 +128,6 @@ t_tetri		*ft_parsing(char **av, t_tetri *stock_tetri)
 		}
 		if (match != 1)
 			ft_error();
-	//	stock_tetri = ft_check_match(*tetri, tetri_base, stock_tetri);
 		tetri++;
 	}
 	return(stock_tetri);
