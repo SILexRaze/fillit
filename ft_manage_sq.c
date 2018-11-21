@@ -6,42 +6,38 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 13:28:09 by vifonne           #+#    #+#             */
-/*   Updated: 2018/11/21 17:47:51 by vifonne          ###   ########.fr       */
+/*   Updated: 2018/11/21 20:28:38 by mabouce          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 #include <stdio.h>
 
-int		ft_put_tetri_in_sq(char **square, int x, int y, int index, int edge)
+int		ft_put_tetri_in_sq(char **square, int x, int y, int index, int edge, int pcs)
 {
 	char		*base;
-	static int	n;
 
 	base = *(ft_init_tetri_base_for_put() + index);
-	while (*base)
+	while (*base && y < edge)
 	{
-		if (*base == '#' && square[x][y] == '.')
+		if (*base == '#' && square[y][x] == '.')
 		{
-			square[x][y] = n + 'A';
+			square[y][x] = pcs + 'A';
 			x++;
 		}
-		else if (*base == '#' && square[x][y] != '.')
+		else if (*base == '#' && square[y][x] != '.')
 			return (0);
-		else if (*base == '-')
+		else if (*base == '-' && x - 1 >= 0)
 			x--;
-		else if (*base == '+')
+		else if (*base == '+' && y + 1 < edge)
 			y++;
-		if (x < 0)
-			return (0);
 		base++;
 	}
-	if (*base == '\0')
+	if (y >= edge)
 	{
-		n++;
-		return (1);
+		return (0);
 	}
-	return (0);
+	return (1);
 }
 	
 /*int		ft_put_tetri_in_sq(char **square, int x, int y, int index)
