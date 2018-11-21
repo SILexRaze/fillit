@@ -6,7 +6,7 @@
 /*   By: mabouce <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 09:27:27 by mabouce           #+#    #+#             */
-/*   Updated: 2018/11/21 21:19:03 by mabouce          ###   ########.fr       */
+/*   Updated: 2018/11/21 21:43:22 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,37 +74,6 @@ int		ft_backtrack(char **square, t_tetri *stock_tetri,
 		y++;
 	}
 	return (0);
-
-
-
-
-/*	while (pcs < 10)
-	{
-	while (!ft_put_tetri_in_sq(square, x, y, stock_tetri->tab[0][pcs], edge, pcs))
-	{
-		ft_del_tetri_in_sq(square, pcs + 'A');
-		ft_print_square(square);
-		ft_putchar('\n');
-		if (x < edge)
-		x++;
-		else if (x >=edge && y < edge)
-		{
-			x = 0;
-			y++;
-		}
-		else if (x >= edge && y >= edge)
-		{
-			pcs = 0;
-			return (0);
-		}
-	}
-	pcs++;
-	}*/
-	(void)edge;
-	(void)x;
-	(void)y;
-	(void)stock_tetri;
-	return (1);
 }
 
 int		ft_calc_edge(t_tetri *stock_tetri, int sizeplus)
@@ -133,8 +102,6 @@ void	ft_resolve(t_tetri *stock_tetri)
 	while (!(ft_backtrack(square, stock_tetri, 0, 0, 0, ft_calc_edge(stock_tetri, sizeplus))))
 	{
 		sizeplus++;
-		printf("sizeplus = : %i\n\n\n", sizeplus);
-		printf("\n");
 		square = ft_set_square(stock_tetri, sizeplus);
 	}
 	ft_print_square(square);

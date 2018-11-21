@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/05 14:49:13 by vifonne           #+#    #+#             */
-/*   Updated: 2018/11/21 20:47:41 by mabouce          ###   ########.fr       */
+/*   Updated: 2018/11/21 21:41:46 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,5 @@ int	ft_sqrt(int nb)
 		return (0);
 	while (i * i < nb)
 		i++;
-	if (i * i == nb)
-		return (i);
-	else
-		return (i);
+	return (i);
 }
