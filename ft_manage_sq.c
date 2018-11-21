@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 13:28:09 by vifonne           #+#    #+#             */
-/*   Updated: 2018/11/21 20:28:38 by mabouce          ###   ########.fr       */
+/*   Updated: 2018/11/21 21:14:23 by mabouce          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,34 +15,36 @@
 
 int		ft_put_tetri_in_sq(char **square, int x, int y, int index, int edge, int pcs)
 {
-	char		*base;
+	char		**base;
+	int			i;
 
-	base = *(ft_init_tetri_base_for_put() + index);
-	while (*base && y < edge)
+	i = 0;
+	base = ft_init_tetri_base_for_put();
+	while (base[index][i] && y < edge && x >= 0)
 	{
-		if (*base == '#' && square[y][x] == '.')
+		if (base[index][i] == '#' && square[y][x] == '.')
 		{
 			square[y][x] = pcs + 'A';
 			x++;
 		}
-		else if (*base == '#' && square[y][x] != '.')
+		else if (base[index][i] == '#' && square[y][x] != '.')
 			return (0);
-		else if (*base == '-' && x - 1 >= 0)
+		else if (base[index][i] == '-')
+		{
+			if (x - 1 < 0)
+				return (0);
 			x--;
-		else if (*base == '+' && y + 1 < edge)
+		}
+		else if (base[index][i] == '+' && y + 1 < edge)
 			y++;
-		base++;
-	}
-	if (y >= edge)
-	{
-		return (0);
+		i++;
 	}
 	return (1);
 }
 	
 /*int		ft_put_tetri_in_sq(char **square, int x, int y, int index)
 {
-	char		**base;
+	char		*base[index][i];
 	int			col;
 	int			i;
 	static int	n;
