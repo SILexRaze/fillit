@@ -6,14 +6,45 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 13:28:09 by vifonne           #+#    #+#             */
-/*   Updated: 2018/11/21 12:46:44 by vifonne          ###   ########.fr       */
+/*   Updated: 2018/11/21 17:47:51 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 #include <stdio.h>
 
-int		ft_put_tetri_in_sq(char **square, int x, int y, int index)
+int		ft_put_tetri_in_sq(char **square, int x, int y, int index, int edge)
+{
+	char		*base;
+	static int	n;
+
+	base = *(ft_init_tetri_base_for_put() + index);
+	while (*base)
+	{
+		if (*base == '#' && square[x][y] == '.')
+		{
+			square[x][y] = n + 'A';
+			x++;
+		}
+		else if (*base == '#' && square[x][y] != '.')
+			return (0);
+		else if (*base == '-')
+			x--;
+		else if (*base == '+')
+			y++;
+		if (x < 0)
+			return (0);
+		base++;
+	}
+	if (*base == '\0')
+	{
+		n++;
+		return (1);
+	}
+	return (0);
+}
+	
+/*int		ft_put_tetri_in_sq(char **square, int x, int y, int index)
 {
 	char		**base;
 	int			col;
@@ -76,7 +107,7 @@ int		ft_put_tetri_in_sq(char **square, int x, int y, int index)
 		return (0);
 	n++;
 	return (1);
-}
+}*/
 
 int		ft_del_tetri_in_sq(char **square, char c)
 {

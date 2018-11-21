@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/15 13:41:41 by vifonne           #+#    #+#             */
-/*   Updated: 2018/11/20 18:21:55 by vifonne          ###   ########.fr       */
+/*   Updated: 2018/11/21 17:41:40 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void			ft_set_stock_to_zero(t_tetri *stock_tetri);
 void			ft_error(void);
 
 char			**ft_init_tetri_base(void);
+char			**ft_init_tetri_base_for_put(void);
 void			ft_set_tab_point(char **square, int square_size);
 
 int				ft_check_line(char *str, int nb_tetri, int nb_line);
