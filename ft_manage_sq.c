@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 13:28:09 by vifonne           #+#    #+#             */
-/*   Updated: 2018/11/21 10:58:31 by vifonne          ###   ########.fr       */
+/*   Updated: 2018/11/21 12:46:44 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,41 @@ int		ft_put_tetri_in_sq(char **square, int x, int y, int index)
 	col = 0;
 	while (base[index][i])
 	{
-		if (col >= 4)
+		if (index == 8)
 		{
-			col = 0;
-			x -= 4;
-			y++;
+			if (col > 1)
+			{
+				col = 0;
+				x -= 2;
+				y++;
+			}
+		}
+		else if (index == 11 || index == 13 || index == 18)
+		{
+			if (col > 2)
+			{
+				col = 0;
+				x -= 3;
+				y++;
+			}
+		}
+		else if (index == 4 || index == 16)
+		{
+			if (col > 2)
+			{
+				col = 0;
+				x -= 4;
+				y++;
+			}
+		}
+		else
+		{
+			if (col > 3)
+			{
+				col = 0;
+				x -= 4;
+				y++;
+			}
 		}
 		if (square[y][x] == '.' && base[index][i] == '#')
 			square[y][x] = n + 'A';
