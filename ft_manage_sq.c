@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 13:28:09 by vifonne           #+#    #+#             */
-/*   Updated: 2018/11/20 18:46:44 by vifonne          ###   ########.fr       */
+/*   Updated: 2018/11/21 10:58:31 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,33 +18,32 @@ int		ft_put_tetri_in_sq(char **square, int x, int y, int index)
 	char		**base;
 	int			col;
 	int			i;
-	size_t		size;
 	static int	n;
 
 	base = ft_init_tetri_base();
 	i = 0;
-	size = 0;
 	col = 0;
-	while (square[y][x] && base[index][i])
+	while (base[index][i])
 	{
-		if (col == 4)
+		if (col >= 4)
 		{
 			col = 0;
 			x -= 4;
 			y++;
 		}
 		if (square[y][x] == '.' && base[index][i] == '#')
-		{
-			size++;
 			square[y][x] = n + 'A';
-		}
 		else if (square[y][x] != '.' && base[index][i] == '#')
+		{
+			ft_del_tetri_in_sq(square, n + 'A');
 			return (0);
+		}
 		x++;
 		i++;
 		col++;
 	}
-	printf("%zu\n", ft_strlen(base[index]));
+	if (base[index][i] != '\0')
+		return (0);
 	n++;
 	return (1);
 }

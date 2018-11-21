@@ -6,11 +6,12 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 12:15:34 by vifonne           #+#    #+#             */
-/*   Updated: 2018/11/21 10:08:23 by vifonne          ###   ########.fr       */
+/*   Updated: 2018/11/21 10:20:29 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
+#include <stdio.h>
 
 int		ft_check_line(char *str, int nb_tetri, int nb_line)
 {
@@ -22,8 +23,6 @@ int		ft_check_line(char *str, int nb_tetri, int nb_line)
 		ft_error();
 	else if (*str == '\n')
 		return (2);
-	else
-		ft_error();
 	return (0);
 }
 
