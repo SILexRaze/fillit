@@ -6,25 +6,12 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 12:15:34 by vifonne           #+#    #+#             */
-/*   Updated: 2018/11/22 14:30:59 by mabouce          ###   ########.fr       */
+/*   Updated: 2018/11/22 15:25:02 by mabouce          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 #include <stdio.h>
-
-int		ft_check_line(char *str, int nb_tetri, int nb_line)
-{
-	if (nb_tetri > 26)
-		ft_error();
-	if (*str == '\n' && *(str + 1) == '\n' && nb_line == 4)
-		return (1);
-	if (*str == '\n' && nb_line > 4)
-		ft_error();
-	else if (*str == '\n')
-		return (2);
-	return (0);
-}
 
 int		ft_ischar(char c)
 {
@@ -47,40 +34,65 @@ int		ft_check_char(char *str)
 	return (1);
 }
 
+int		ft_check_end_input(char *str)
+{
+	int i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	if (str[i - 1] != '\n')
+		ft_error();
+	if (str[i - 1] == '\n' && str[i - 2] == '\n')
+		ft_error();
+	return (1);
+}
+
+int	ft_count_nb_line(char *str)
+{
+	int i;
+	int nbline;
+
+	nbline = 0;
+	i = ft_strlen(str);
+	while (i > 0)
+	{
+		if (str[i] == '\n')
+			nbline++;
+		i--;
+	}
+	return (nbline);
+}
+
 int ft_check_input(char *str)
 {
-	int	col;
-	int	line;
+	int i;
+	int	nbline;
+	int x;
 
-	col = 0;
-	line = 0;
 	ft_check_char(str);
-	while (*str)
+	ft_check_end_input(str);
+	i = 0;
+	x = 0;
+	nbline = 0;
+	while (str[i])
 	{
-		if (*str == '\n' && ft_ischar(*(str + 1)) == 1)
+		if (nbline % 5 == 0 && nbline != 0)
+			nbline++;
+		if (ft_ischar(str[i]))
+			x++;
+		if (str[i] == '\n' && x == 4)
 		{
-			if (col >= 4)
-				col = 0;
-			else
-			{
-				ft_putchar('t');
-				ft_error();
-			}
-			line++;
+			nbline++;
+			x = 0;
 		}
-		else if (*str == '\n' && *(str + 1) == '\n')
-		{
-			if (line >= 4)
-				line = 0;
-			else
-			{
-				printf("%d\n", line);
-				ft_putchar('e');
-				ft_error();
-			}
-		}
-		col++;
-		str++;
+		else if (x > 4)
+			ft_error();
+		i++;
 	}
+	if ((nbline + 1) % 5 != 0)
+		ft_error();
+	if (nbline != ft_count_nb_line(str))
+		ft_error();
 	return (1);
 }
