@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 13:28:09 by vifonne           #+#    #+#             */
-/*   Updated: 2018/11/22 11:39:24 by mabouce          ###   ########.fr       */
+/*   Updated: 2018/11/22 21:49:50 by mabouce          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,17 +67,19 @@ int		ft_del_tetri_in_sq(char **square, char c)
 	return (1);
 }
 
-void	ft_sqdel(char **square)
+void	ft_sqdel(char ***square)
 {
 	int	i;
 
 	i = 0;
-	if (square)
+	if (*square)
 	{
-		while (square[i])
+		while ((*square)[i])
 		{
-			ft_strdel(&square[i]);
+			ft_strdel((*square) + i);
 			i++;
 		}
+		free(*square);
+		*square = NULL;
 	}
 }

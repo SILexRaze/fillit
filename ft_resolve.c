@@ -6,7 +6,7 @@
 /*   By: mabouce <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 09:27:27 by mabouce           #+#    #+#             */
-/*   Updated: 2018/11/22 11:47:45 by mabouce          ###   ########.fr       */
+/*   Updated: 2018/11/22 21:50:41 by mabouce          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,46 +29,47 @@ int		ft_count_tetri(t_tetri *stock_tetri)
 	return (count);
 }
 
-char	**ft_set_square(t_tetri *stock_tetri, int sizeplus)
+void	ft_set_square(t_tetri *stock_t, int sizeplus)
 {
-	char **square;
 	int	edge;
 	int i;
 
-	edge = ft_calc_edge(stock_tetri, sizeplus);
+	edge = ft_calc_edge(stock_t, sizeplus);
 
-	if (!(square = (char **)malloc(sizeof(char *) * (edge + 1))))
+	if (!(stock_t->square = (char **)malloc(sizeof(char *) * (edge + 1))))
 		ft_error();
-	square[edge] = 0;
+	stock_t->square[edge] = 0;
 	i = 0;
 	while (i < edge)
 	{
-		if (!(square[i] = (char *)malloc(sizeof(char) * (edge + 1))))
+		if (!(stock_t->square[i] = (char *)malloc(sizeof(char) * (edge + 1))))
 			ft_error();
-		square[i][edge] = 0;
+		stock_t->square[i][edge] = 0;
 		i++;
 	}
-	ft_set_tab_point(square, edge);
-	return (square);
+	stock_t->square = ft_set_tab_point(stock_t->square, edge);
 }
 
-int		ft_backtrack(char **square, t_tetri *stock_tetri, 
-		int x, int y, int pcs, int edge)
+int		ft_backtrack(t_tetri *stock_t, int pcs, int edge)
 {
+	int x;
+	int y;
 
-	if(pcs == ft_count_tetri(stock_tetri))
+	x = 0;
+	y = 0;
+	if(pcs == ft_count_tetri(stock_t))
 		return (1);
 	while (y < edge)
 	{
 		x = 0;
 		while (x < edge)
 		{
-			if (ft_put_tetri_in_sq(square, x, y, stock_tetri->tab[0][pcs], edge, pcs))
+			if (ft_put_tetri_in_sq(stock_t->square, x, y, stock_t->tab[0][pcs], edge, pcs))
 			{
-				if (ft_backtrack(square, stock_tetri, 0, 0, pcs + 1, edge))
+				if (ft_backtrack(stock_t, pcs + 1, edge))
 					return (1);
 			}
-			ft_del_tetri_in_sq(square, pcs +'A');
+			ft_del_tetri_in_sq(stock_t->square, pcs +'A');
 			x++;
 		}
 		y++;
@@ -92,19 +93,18 @@ int		ft_calc_edge(t_tetri *stock_tetri, int sizeplus)
 	return (edge);
 }
 
-void	ft_resolve(t_tetri *stock_tetri)
+void	ft_resolve(t_tetri *stock_t)
 {
-	char **square;
 	int		sizeplus;
 
 	sizeplus = 0;
-	square = ft_set_square(stock_tetri, sizeplus);
-	while (!(ft_backtrack(square, stock_tetri, 0, 0, 0, ft_calc_edge(stock_tetri, sizeplus))))
+	ft_set_square(stock_t, sizeplus);
+	while (!(ft_backtrack(stock_t, 0, ft_calc_edge(stock_t, sizeplus))))
 	{
 		sizeplus++;
-		ft_sqdel(square);
-		square = ft_set_square(stock_tetri, sizeplus);
+		ft_sqdel(&(stock_t->square));
+		ft_set_square(stock_t, sizeplus);
 	}
-	ft_print_square(square);
-	ft_sqdel(square);
+	ft_print_square(stock_t->square);
+	ft_sqdel(&(stock_t->square));
 }

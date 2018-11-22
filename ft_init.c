@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 13:17:45 by vifonne           #+#    #+#             */
-/*   Updated: 2018/11/21 22:11:03 by vifonne          ###   ########.fr       */
+/*   Updated: 2018/11/22 21:24:48 by mabouce          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,13 +70,12 @@ char	**ft_init_tetri_base_for_put(void)
 	return (tab);
 }
 
-void	ft_set_tab_point(char **square, int square_size)
+char	**ft_set_tab_point(char **square, int square_size)
 {
 	int i;
 	int j;
 
 	i = 0;
-	square[square_size] = NULL;
 	while (i < square_size)
 	{
 		j = 0;
@@ -88,4 +87,5 @@ void	ft_set_tab_point(char **square, int square_size)
 		square[i][j] = 0;
 		i++;
 	}
+	return (square);
 }

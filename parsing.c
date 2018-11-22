@@ -6,22 +6,21 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/15 13:40:35 by vifonne           #+#    #+#             */
-/*   Updated: 2018/11/22 12:11:46 by mabouce          ###   ########.fr       */
+/*   Updated: 2018/11/22 21:50:09 by mabouce          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-char		*ft_read_file(char *filename)
+t_tetri		*ft_read_file(t_tetri *stock_t, char *filename)
 {
 	int		fd;
 	int		ret;
 	int		i;
 	char	*line;
-	char	*tetri;
 
 	i = 1;
-	if (!(tetri = ft_strnew(0)))
+	if (!(stock_t->tetri = ft_strnew(0)))
 		ft_error();
 	if (!(fd = open(filename, O_RDONLY)))
 		ft_error();
@@ -29,28 +28,28 @@ char		*ft_read_file(char *filename)
 	{
 		if (ret < 0 || i > 129)
 			ft_error();
-		if (!(tetri = ft_strdjoin(tetri, ft_strdjoin(line, "\n"))))
+		if (!(stock_t->tetri = ft_strdjoin(stock_t->tetri, 
+			ft_strdjoin(line, "\n"))))
 			ft_error();
 		i++;
 	}
 	close(fd);
-	if (!ft_check_input(tetri))
-		ft_error();
-	return (ft_swap_nl_to_x(tetri));
+	ft_check_input(stock_t->tetri);
+	return (ft_swap_nl_to_x(stock_t));
 }
 
-char		*ft_swap_nl_to_x(char *str)
+t_tetri		*ft_swap_nl_to_x(t_tetri *stock_t)
 {
 	int	i;
 
 	i = 0;
-	while (str[i + 1])
+	while (stock_t->tetri[i + 1])
 	{
-		if (str[i] == '\n' && str[i + 1] == '\n')
-			str[i + 1] = 'x';
+		if (stock_t->tetri[i] == '\n' && stock_t->tetri[i + 1] == '\n')
+			stock_t->tetri[i + 1] = 'x';
 		i++;
 	}
-	return (str);
+	return (stock_t);
 }
 
 void		ft_cut_to_tetri(char **tetri)
@@ -88,41 +87,39 @@ char		*ft_set_in_one_line(char *str)
 {
 	char	**tab;
 	char	*s1;
+	int 	i;
 
-	s1 = ft_strnew(0);
+	i = 0;
+	if (!(s1 = ft_strnew(0)))
+	{
+		ft_strdel(&str);
+		ft_error();
+	}
 	tab = ft_strsplit(str, '\n');
-	while (*tab)
-		s1 = ft_strdjoin(s1, *tab++);
-	ft_sqdel(tab);
+	while (tab[i])
+		s1 = ft_strdjoin(s1, tab[i++]);
+	ft_sqdel(&tab);
 	return (s1);
 }
 
-t_tetri		*ft_parsing(char **av, t_tetri *stock_tetri)
+t_tetri		*ft_parsing(t_tetri *stock_t, int set_order)
 {
-	char	**tetri;
-	char	**tetri_base;
 	int		match;
 	int		j;
-	int		set_order;
+	int		i;
 
-	if (!(stock_tetri = malloc(sizeof(t_tetri))))
-		ft_error();
-	ft_set_stock_to_zero(stock_tetri);
-	tetri = ft_strsplit(ft_set_in_one_line(ft_read_file(av[1])), 'x');
-	ft_cut_to_tetri(tetri);
-	tetri_base = ft_init_tetri_base();
-	set_order = 0;
-	while (*tetri)
+	i = 0;
+	while (stock_t->tetri_block[i])
 	{
 		match = 0;
 		j = 0;
-		while (tetri_base[j])
+		while (stock_t->t_base[j])
 		{
-			if (ft_strequ(*tetri, tetri_base[j]))
+			if (ft_strequ(stock_t->tetri_block[i], stock_t->t_base[j]))
 			{
 				match = 1;
-				stock_tetri->tab[0][set_order] = j;
-				stock_tetri->tab[1][j]++;
+				stock_t->tab[0][set_order] = j;
+				stock_t->tab[1][j]++;
 				set_order++;
 				break ;
 			}
@@ -130,7 +127,8 @@ t_tetri		*ft_parsing(char **av, t_tetri *stock_tetri)
 		}
 		if (match != 1)
 			ft_error();
-		tetri++;
+		i++;
 	}
-	return(stock_tetri);
+	ft_sqdel(&stock_t->tetri_block);
+	return(stock_t);
 }

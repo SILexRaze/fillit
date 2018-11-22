@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 12:15:34 by vifonne           #+#    #+#             */
-/*   Updated: 2018/11/22 16:06:35 by vifonne          ###   ########.fr       */
+/*   Updated: 2018/11/22 17:50:25 by mabouce          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,13 @@ int		ft_check_char(char *str)
 	while (str[i])
 	{
 		if (!ft_ischar(str[i]) && str[i] != '\n')
-			ft_error();
+			ft_error_str(str);
 		i++;
 	}
 	return (1);
 }
 
-int		ft_check_end_input(char *str)
+void	ft_check_end_input(char *str)
 {
 	int i;
 
@@ -42,10 +42,9 @@ int		ft_check_end_input(char *str)
 	while (str[i])
 		i++;
 	if (str[i - 1] != '\n')
-		ft_error();
+		ft_error_str(str);
 	if (str[i - 1] == '\n' && str[i - 2] == '\n')
-		ft_error();
-	return (1);
+		ft_error_str(str);
 }
 
 int	ft_count_nb_line(char *str)
@@ -64,7 +63,7 @@ int	ft_count_nb_line(char *str)
 	return (nbline);
 }
 
-int ft_check_input(char *str)
+void ft_check_input(char *str)
 {
 	int i;
 	int	nbline;
@@ -89,12 +88,11 @@ int ft_check_input(char *str)
 			x = 0;
 		}
 		else if (x > 4)
-			ft_error();
+			ft_error_str(str);
 		i++;
 	}
 	if ((nbline + 1) % 5 != 0)
-		ft_error();
+		ft_error_str(str);
 	if (nbline != ft_count_nb_line(str))
-		ft_error();
-	return (1);
+		ft_error_str(str);
 }
