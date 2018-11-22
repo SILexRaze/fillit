@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 13:28:09 by vifonne           #+#    #+#             */
-/*   Updated: 2018/11/21 22:15:46 by vifonne          ###   ########.fr       */
+/*   Updated: 2018/11/22 11:39:24 by mabouce          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ int		ft_put_tetri_in_sq(char **square, int x, int y, int index, int edge, int pc
 			y++;
 		i++;
 	}
+	free(base);
 	return (1);
 }
 

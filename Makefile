@@ -6,7 +6,7 @@
 #    By: vifonne <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 19:05:19 by vifonne           #+#    #+#              #
-#    Updated: 2018/11/21 22:09:34 by vifonne          ###   ########.fr        #
+#    Updated: 2018/11/22 11:51:23 by mabouce          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,8 +46,10 @@ $(NAME): $(OBJ) $(SRCS)
 clean:
 	@echo "$(_RED)"
 	rm -f $(OBJ)
+	make clean -C ./libft/
 
 fclean:	clean
 	rm -f $(NAME)
+	make fclean -C ./libft/
 
 re:	fclean $(NAME)
