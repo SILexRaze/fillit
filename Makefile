@@ -6,7 +6,7 @@
 #    By: vifonne <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 19:05:19 by vifonne           #+#    #+#              #
-#    Updated: 2018/11/22 11:51:23 by mabouce          ###   ########.fr        #
+#    Updated: 2018/11/22 15:34:34 by vifonne          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,8 @@ SRCS		=		main.c					\
 					ft_resolve.c			\
 					ft_print_square.c		\
 					ft_check.c				\
-					ft_manage_sq.c
+					ft_manage_sq.c			\
+					ft_dim.c
 
 INCLUDES	=		includes/
 

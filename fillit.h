@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/15 13:41:41 by vifonne           #+#    #+#             */
-/*   Updated: 2018/11/21 21:52:31 by vifonne          ###   ########.fr       */
+/*   Updated: 2018/11/22 16:06:49 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ int				ft_backtrack(char **square, t_tetri *stock_tetri, int x, int y, int pcs, 
 int				ft_count_tetri(t_tetri *stock_tetri);
 int				ft_check_line(char *str, int nb_tetri, int nb_line);
 int				ft_check_input(char *str);
-
+int				ft_check_dim(char *str);
+int				ft_check_dim2(char *str);
 void			ft_print_square(char **square);
 void			ft_resolve(t_tetri *stock_tetri);
 void			ft_cut_to_tetri(char **tetri);

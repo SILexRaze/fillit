@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 12:15:34 by vifonne           #+#    #+#             */
-/*   Updated: 2018/11/22 15:25:02 by mabouce          ###   ########.fr       */
+/*   Updated: 2018/11/22 16:06:35 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,8 @@ int ft_check_input(char *str)
 
 	ft_check_char(str);
 	ft_check_end_input(str);
+	ft_check_dim(str);
+	ft_check_dim2(str);
 	i = 0;
 	x = 0;
 	nbline = 0;
