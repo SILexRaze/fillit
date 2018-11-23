@@ -6,34 +6,33 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/15 13:40:35 by vifonne           #+#    #+#             */
-/*   Updated: 2018/11/23 13:45:23 by mabouce          ###   ########.fr       */
+/*   Updated: 2018/11/23 14:31:52 by mabouce          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-t_tetri		*ft_read_file(t_tetri *stock_t, char *filename)
+t_tetri		*ft_read_file(t_tetri *stock_t, char *flnme)
 {
 	int		fd;
 	int		ret;
 	int		i;
 	char	*line;
 
-	i = 1;
+	i = 0;
 	if (!(stock_t->tetri = ft_strnew(0)))
-		ft_error();
-	if (!(fd = open(filename, O_RDONLY)))
-		ft_error();
+		ft_error_struct_str(stock_t, flnme);
+	if (!(fd = open(flnme, O_RDONLY)))
+		ft_error_struct_str_str(stock_t, flnme, stock_t->tetri);
 	while ((ret = get_next_line(fd, &line)))
 	{
-		if (ret < 0 || i > 129)
-			ft_error_str(line);
+		if (ret < 0 || ++i > 129)
+			ft_error_struct_str_str_str(stock_t, flnme, stock_t->tetri, line);
 		if (!(line = ft_strdjoin(line, "\n")))
-			ft_error_str(line);
+			ft_error_struct_str_str_str(stock_t, flnme, stock_t->tetri, line);
 		if (!(stock_t->tetri = ft_strdjoin(stock_t->tetri, line)))
-			ft_error_str(line);
+			ft_error_struct_str_str_str(stock_t, flnme, stock_t->tetri, line);
 		ft_strdel(&line);
-		i++;
 	}
 	close(fd);
 	ft_maincheck(stock_t->tetri);
@@ -92,10 +91,7 @@ char		*ft_set_in_one_line(char *str)
 
 	i = 0;
 	if (!(s1 = ft_strnew(0)))
-	{
-		ft_strdel(&str);
-		ft_error();
-	}
+		ft_error_str(str);
 	tab = ft_strsplit(str, '\n');
 	while (tab[i])
 		s1 = ft_strdjoin(s1, tab[i++]);
@@ -127,7 +123,7 @@ t_tetri		*ft_parsing(t_tetri *stock_t, int set_order)
 			}
 		}
 		if (match != 1)
-			ft_error();
+			ft_error_tab(stock_t->tetri_block);
 	}
 	ft_sqdel(&stock_t->tetri_block);
 	return (stock_t);

@@ -6,15 +6,17 @@
 #    By: vifonne <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 19:05:19 by vifonne           #+#    #+#              #
-#    Updated: 2018/11/23 13:27:54 by mabouce          ###   ########.fr        #
+#    Updated: 2018/11/23 14:14:13 by mabouce          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCS		=		main.c					\
 					parsing.c				\
 					ft_error.c				\
-					ft_error_struct.c		\
 					ft_error_str.c			\
+					ft_error_tab.c			\
+					ft_error_struct.c		\
+					ft_error_struct_str.c	\
 					ft_init.c				\
 					ft_set_stock_to_zero.c	\
 					ft_resolve.c			\

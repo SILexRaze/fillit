@@ -6,7 +6,7 @@
 /*   By: mabouce <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 17:43:54 by mabouce           #+#    #+#             */
-/*   Updated: 2018/11/22 17:45:06 by mabouce          ###   ########.fr       */
+/*   Updated: 2018/11/23 14:08:51 by mabouce          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,5 @@
 void	ft_error_str(char *str)
 {
 	ft_strdel(&str);
-	ft_putstr("error\n");
-	exit(0);
+	ft_error();
 }

@@ -1,19 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_error_struct.c                                  :+:      :+:    :+:   */
+/*   ft_error_tab.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mabouce <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/23 14:05:04 by mabouce           #+#    #+#             */
-/*   Updated: 2018/11/23 14:09:27 by mabouce          ###   ########.fr       */
+/*   Created: 2018/11/23 14:03:08 by mabouce           #+#    #+#             */
+/*   Updated: 2018/11/23 14:03:37 by mabouce          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-void	ft_error_struct(t_tetri *stock_t)
+void	ft_error_tab(char **str)
 {
-	free(stock_t);
-	ft_error();
+	ft_sqdel(&str);
+	ft_putstr("error\n");
+	exit(0);
 }

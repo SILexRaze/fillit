@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/15 13:41:41 by vifonne           #+#    #+#             */
-/*   Updated: 2018/11/23 13:27:50 by mabouce          ###   ########.fr       */
+/*   Updated: 2018/11/23 14:29:38 by mabouce          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,13 @@ void			ft_cut_to_tetri(char **tetri);
 void			ft_set_stock_to_zero(t_tetri *stock_tetri);
 void			ft_error(void);
 void			ft_error_str(char *str);
+void			ft_error_tab(char **str);
 void			ft_error_struct(t_tetri *stock_t);
+void			ft_error_struct_str(t_tetri *stock_t, char *str);
+void			ft_error_struct_str_str(t_tetri *stock_t, char *str, 
+				char *str2);
+void			ft_error_struct_str_str_str(t_tetri *stock_t, char *str, 
+				char *str2, char *str3);
 void			ft_sqdel(char ***square);
 void			ft_maincheck(char *str);
 void			ft_set_square(t_tetri *stock_t, int sizeplus);
@@ -55,7 +61,7 @@ char			*ft_set_in_one_line(char *str);
 char			**ft_set_tab_point(char **square, int square_size);
 char			**ft_init_tetri_base_for_put(void);
 char			**ft_init_tetri_base(void);
-t_tetri			*ft_read_file(t_tetri *stock_t, char *filename);
+t_tetri			*ft_read_file(t_tetri *stock_t, char *flnme);
 t_tetri			*ft_swap_nl_to_x(t_tetri *stock_t);
 t_tetri			*ft_parsing(t_tetri *stock_t, int set_order);
 t_tetri			*ft_check_match(char *tetri, char **tetri_base,
