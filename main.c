@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@41.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/15 14:21:25 by vifonne           #+#    #+#             */
-/*   Updated: 2018/11/23 12:01:35 by mabouce          ###   ########.fr       */
+/*   Updated: 2018/11/23 12:10:32 by mabouce          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,13 @@
 
 t_tetri	*ft_main_parsing(char **av, t_tetri *stock_t)
 {
+	char *tmp;
+
 	ft_set_stock_to_zero(stock_t);
 	stock_t = ft_read_file(stock_t, av[1]);
-	stock_t->tetri_block = ft_strsplit(ft_set_in_one_line(stock_t->tetri), 'x');
+	tmp = ft_set_in_one_line(stock_t->tetri);
+	stock_t->tetri_block = ft_strsplit(tmp, 'x');
+	ft_strdel(&tmp);
 	ft_cut_to_tetri(stock_t->tetri_block);
 	ft_parsing(stock_t, 0);
 	return (stock_t);
