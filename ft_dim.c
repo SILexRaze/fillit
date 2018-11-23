@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 15:28:43 by vifonne           #+#    #+#             */
-/*   Updated: 2018/11/23 04:05:14 by vifonne          ###   ########.fr       */
+/*   Updated: 2018/11/23 11:58:23 by mabouce          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int		ft_check_dim(char *str, int i, int n, int x)
 			ft_error();
 		n++;
 	}
+	ft_sqdel(&tab);
 	return (1);
 }
 

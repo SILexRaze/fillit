@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@41.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/15 14:21:25 by vifonne           #+#    #+#             */
-/*   Updated: 2018/11/23 04:20:43 by vifonne          ###   ########.fr       */
+/*   Updated: 2018/11/23 12:01:35 by mabouce          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,7 @@ int		main(int ac, char **av)
 		ft_error();
 	stock_t->t_base = ft_init_tetri_base();
 	ft_resolve(ft_main_parsing(av, stock_t));
+	free(stock_t);
+	free(stock_t->t_base);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/15 13:40:35 by vifonne           #+#    #+#             */
-/*   Updated: 2018/11/23 04:00:51 by vifonne          ###   ########.fr       */
+/*   Updated: 2018/11/23 11:58:54 by mabouce          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,16 @@ t_tetri		*ft_read_file(t_tetri *stock_t, char *filename)
 	{
 		if (ret < 0 || i > 129)
 			ft_error();
-		if (!(stock_t->tetri = ft_strdjoin(stock_t->tetri,
-			ft_strdjoin(line, "\n"))))
+		if (!(line = ft_strdjoin(line, "\n")))
 			ft_error();
+		if (!(stock_t->tetri = ft_strdjoin(stock_t->tetri, line)))
+			ft_error();
+		ft_strdel(&line);
 		i++;
 	}
 	close(fd);
 	ft_maincheck(stock_t->tetri);
+	ft_strdel(&line);
 	return (ft_swap_nl_to_x(stock_t));
 }
 
@@ -97,6 +100,7 @@ char		*ft_set_in_one_line(char *str)
 	while (tab[i])
 		s1 = ft_strdjoin(s1, tab[i++]);
 	ft_sqdel(&tab);
+	ft_strdel(&str);
 	return (s1);
 }
 
