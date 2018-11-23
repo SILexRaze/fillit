@@ -6,7 +6,7 @@
 /*   By: mabouce <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 09:27:27 by mabouce           #+#    #+#             */
-/*   Updated: 2018/11/23 11:04:54 by mabouce          ###   ########.fr       */
+/*   Updated: 2018/11/23 11:11:42 by mabouce          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,14 @@ void	ft_set_square(t_tetri *stock_t, int sizeplus)
 	int i;
 
 	ft_calc_edge(stock_t, sizeplus);
-	if (!(stock_t->square = (char **)malloc(sizeof(char *) * 
+	if (!(stock_t->square = (char **)malloc(sizeof(char *) *
 					(stock_t->edge + 1))))
 		ft_error();
 	stock_t->square[stock_t->edge] = 0;
 	i = 0;
 	while (i < stock_t->edge)
 	{
-		if (!(stock_t->square[i] = (char *)malloc(sizeof(char) * 
+		if (!(stock_t->square[i] = (char *)malloc(sizeof(char) *
 						(stock_t->edge + 1))))
 			ft_error();
 		stock_t->square[i][stock_t->edge] = 0;
@@ -62,8 +62,7 @@ int		ft_backtrack(t_tetri *stock_t, int pcs)
 		x = 0;
 		while (x < stock_t->edge)
 		{
-			if (ft_put_tetri_in_sq(stock_t, x, y, 
-						stock_t->tab[0][pcs], pcs))
+			if (ft_put_tetri_in_sq(stock_t, x, y, pcs))
 			{
 				if (ft_backtrack(stock_t, pcs + 1))
 					return (1);

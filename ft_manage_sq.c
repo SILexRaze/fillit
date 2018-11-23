@@ -6,14 +6,14 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 13:28:09 by vifonne           #+#    #+#             */
-/*   Updated: 2018/11/23 11:05:18 by mabouce          ###   ########.fr       */
+/*   Updated: 2018/11/23 11:11:09 by mabouce          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
 int		ft_put_tetri_in_sq(t_tetri *stock_t,
-		int x, int y, int index, int pcs)
+		int x, int y, int pcs)
 {
 	char		**base;
 	int			i;
@@ -21,19 +21,20 @@ int		ft_put_tetri_in_sq(t_tetri *stock_t,
 	i = 0;
 	if (!(base = ft_init_tetri_base_for_put()))
 		ft_error();
-	while (base[index][i] && y < stock_t->edge && x >= 0)
+	while (base[stock_t->tab[0][pcs]][i] && y < stock_t->edge && x >= 0)
 	{
-		if (base[index][i] == '#' && stock_t->square[y][x] == '.')
+		if (base[stock_t->tab[0][pcs]][i] == '#'
+				&& stock_t->square[y][x] == '.')
 			stock_t->square[y][x++] = pcs + 'A';
-		else if (base[index][i] == '#' && stock_t->square[y][x] != '.')
+		else if (base[stock_t->tab[0][pcs]][i] == '#'
+				&& stock_t->square[y][x] != '.')
 			return (0);
-		else if (base[index][i] == '-')
+		else if (base[stock_t->tab[0][pcs]][i] == '-')
 		{
-			if (x - 1 < 0)
+			if (x-- - 1 < 0)
 				return (0);
-			x--;
 		}
-		else if (base[index][i] == '+' && y + 1 < stock_t->edge)
+		else if (base[stock_t->tab[0][pcs]][i] == '+' && y + 1 < stock_t->edge)
 			y++;
 		i++;
 	}
