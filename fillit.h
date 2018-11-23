@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/15 13:41:41 by vifonne           #+#    #+#             */
-/*   Updated: 2018/11/23 14:56:01 by mabouce          ###   ########.fr       */
+/*   Updated: 2018/11/23 15:06:19 by mabouce          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,14 +47,15 @@ void			ft_cut_to_tetri(char **tetri);
 void			ft_set_stock_to_zero(t_tetri *stock_tetri);
 void			ft_error(void);
 void			ft_error_str(char **str);
-void			ft_error_tab(char **str);
-void			ft_error_tab_str(char **str, char *str2);
+void			ft_error_tab(char ***str);
+void			ft_error_tab_str(char ***str, char **str2);
 void			ft_error_struct(t_tetri *stock_t);
-void			ft_error_struct_str(t_tetri *stock_t, char *str);
-void			ft_error_struct_str_str(t_tetri *stock_t, char *str, 
-				char *str2);
-void			ft_error_struct_str_str_str(t_tetri *stock_t, char *str, 
-				char *str2, char *str3);
+void			ft_error_struct_tab(t_tetri *stock_t, char ***tab);
+void			ft_error_struct_str(t_tetri *stock_t, char **str);
+void			ft_error_struct_str_str(t_tetri *stock_t, char **str, 
+				char **str2);
+void			ft_error_struct_str_str_str(t_tetri *stock_t, char **str, 
+				char **str2, char **str3);
 void			ft_sqdel(char ***square);
 void			ft_maincheck(char *str);
 void			ft_set_square(t_tetri *stock_t, int sizeplus);

@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 15:28:43 by vifonne           #+#    #+#             */
-/*   Updated: 2018/11/23 14:58:04 by mabouce          ###   ########.fr       */
+/*   Updated: 2018/11/23 15:00:33 by mabouce          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,14 @@ int		ft_check_dim(char *str, int i, int n, int x)
 			if (tab[i][j] == '#')
 				x++;
 		if (j != 4)
-			ft_error_tab_str(tab, str);
+			ft_error_tab_str(&tab, &str);
 		if (n % 4 == 0 && i != 0 && x == 4)
 		{
 			x = 0;
 			n = 0;
 		}
 		else if (n % 4 == 0 && i != 0 && x != 4)
-			ft_error_tab_str(tab, str);
+			ft_error_tab_str(&tab, &str);
 		n++;
 	}
 	ft_sqdel(&tab);
