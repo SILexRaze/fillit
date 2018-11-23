@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/15 13:41:41 by vifonne           #+#    #+#             */
-/*   Updated: 2018/11/23 11:06:46 by mabouce          ###   ########.fr       */
+/*   Updated: 2018/11/23 11:24:54 by mabouce          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,10 @@ typedef struct	s_tetri
 	int			tab[2][19];
 	int			edge;
 	int			pcs;
+	int			i;
 	char		*tetri;
 	char		**t_base;
+	char		**base;
 	char		**tetri_block;
 	char		**square;
 }				t_tetri;
