@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/15 13:41:41 by vifonne           #+#    #+#             */
-/*   Updated: 2018/11/23 10:55:02 by mabouce          ###   ########.fr       */
+/*   Updated: 2018/11/23 10:59:53 by mabouce          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 typedef struct	s_tetri
 {
 	int			tab[2][19];
+	int			edge;
 	int			pcs;
 	char		*tetri;
 	char		**t_base;
@@ -29,8 +30,8 @@ typedef struct	s_tetri
 int				ft_put_tetri_in_sq(t_tetri *stock_t,
 				int x, int y, int index, int edge, int pcs);
 int				ft_del_tetri_in_sq(char **square, char c);
-int				ft_calc_edge(t_tetri *stock_tetri, int sizeplus);
-int				ft_backtrack(t_tetri *stock_t, int pcs, int edge);
+void			ft_calc_edge(t_tetri *stock_tetri, int sizeplus);
+int				ft_backtrack(t_tetri *stock_t, int pcs);
 int				ft_count_tetri(t_tetri *stock_tetri);
 int				ft_check_line(char *str, int nb_tetri, int nb_line);
 int				ft_check_dim(char *str, int i, int n, int x);
