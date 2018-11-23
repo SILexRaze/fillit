@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/15 13:41:41 by vifonne           #+#    #+#             */
-/*   Updated: 2018/11/23 10:59:53 by mabouce          ###   ########.fr       */
+/*   Updated: 2018/11/23 11:03:56 by mabouce          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ typedef struct	s_tetri
 }				t_tetri;
 
 int				ft_put_tetri_in_sq(t_tetri *stock_t,
-				int x, int y, int index, int edge, int pcs);
+				int x, int y, int index, int pcs);
 int				ft_del_tetri_in_sq(char **square, char c);
 void			ft_calc_edge(t_tetri *stock_tetri, int sizeplus);
 int				ft_backtrack(t_tetri *stock_t, int pcs);

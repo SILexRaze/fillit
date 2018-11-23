@@ -6,14 +6,14 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 13:28:09 by vifonne           #+#    #+#             */
-/*   Updated: 2018/11/23 10:50:09 by mabouce          ###   ########.fr       */
+/*   Updated: 2018/11/23 11:05:18 by mabouce          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
 int		ft_put_tetri_in_sq(t_tetri *stock_t,
-		int x, int y, int index, int edge, int pcs)
+		int x, int y, int index, int pcs)
 {
 	char		**base;
 	int			i;
@@ -21,7 +21,7 @@ int		ft_put_tetri_in_sq(t_tetri *stock_t,
 	i = 0;
 	if (!(base = ft_init_tetri_base_for_put()))
 		ft_error();
-	while (base[index][i] && y < edge && x >= 0)
+	while (base[index][i] && y < stock_t->edge && x >= 0)
 	{
 		if (base[index][i] == '#' && stock_t->square[y][x] == '.')
 			stock_t->square[y][x++] = pcs + 'A';
@@ -33,7 +33,7 @@ int		ft_put_tetri_in_sq(t_tetri *stock_t,
 				return (0);
 			x--;
 		}
-		else if (base[index][i] == '+' && y + 1 < edge)
+		else if (base[index][i] == '+' && y + 1 < stock_t->edge)
 			y++;
 		i++;
 	}
