@@ -6,7 +6,7 @@
 /*   By: mabouce <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 09:27:27 by mabouce           #+#    #+#             */
-/*   Updated: 2018/11/23 04:05:09 by vifonne          ###   ########.fr       */
+/*   Updated: 2018/11/23 10:55:01 by mabouce          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,8 @@ int		ft_backtrack(t_tetri *stock_t, int pcs, int edge)
 		x = 0;
 		while (x < edge)
 		{
-			if (ft_put_tetri_in_sq(stock_t->square, x, y, stock_t->tab[0][pcs], edge, pcs))
+			if (ft_put_tetri_in_sq(stock_t, x, y, 
+						stock_t->tab[0][pcs], edge, pcs))
 			{
 				if (ft_backtrack(stock_t, pcs + 1, edge))
 					return (1);
