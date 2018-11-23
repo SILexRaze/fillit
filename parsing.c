@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/15 13:40:35 by vifonne           #+#    #+#             */
-/*   Updated: 2018/11/22 21:50:09 by mabouce          ###   ########.fr       */
+/*   Updated: 2018/11/23 04:00:51 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,13 @@ t_tetri		*ft_read_file(t_tetri *stock_t, char *filename)
 	{
 		if (ret < 0 || i > 129)
 			ft_error();
-		if (!(stock_t->tetri = ft_strdjoin(stock_t->tetri, 
+		if (!(stock_t->tetri = ft_strdjoin(stock_t->tetri,
 			ft_strdjoin(line, "\n"))))
 			ft_error();
 		i++;
 	}
 	close(fd);
-	ft_check_input(stock_t->tetri);
+	ft_maincheck(stock_t->tetri);
 	return (ft_swap_nl_to_x(stock_t));
 }
 
@@ -59,16 +59,16 @@ void		ft_cut_to_tetri(char **tetri)
 	int		y;
 	char	*tmp;
 
-	i = 0;
-	while (tetri[i])
+	i = -1;
+	while (tetri[++i])
 	{
 		tmp = tetri[i];
 		if (!(tetri[i] = ft_strdup(ft_strchr(tetri[i], '#'))))
 			ft_error();
 		ft_strdel(&tmp);
-		j = 0;
+		j = -1;
 		y = 0;
-		while (tetri[i][j])
+		while (tetri[i][++j])
 		{
 			if (tetri[i][j] == '#')
 				y++;
@@ -77,9 +77,7 @@ void		ft_cut_to_tetri(char **tetri)
 				tetri[i][j + 1] = '\0';
 				break ;
 			}
-			j++;
 		}
-		i++;
 	}
 }
 
@@ -87,7 +85,7 @@ char		*ft_set_in_one_line(char *str)
 {
 	char	**tab;
 	char	*s1;
-	int 	i;
+	int		i;
 
 	i = 0;
 	if (!(s1 = ft_strnew(0)))
@@ -108,12 +106,12 @@ t_tetri		*ft_parsing(t_tetri *stock_t, int set_order)
 	int		j;
 	int		i;
 
-	i = 0;
-	while (stock_t->tetri_block[i])
+	i = -1;
+	while (stock_t->tetri_block[++i])
 	{
 		match = 0;
-		j = 0;
-		while (stock_t->t_base[j])
+		j = -1;
+		while (stock_t->t_base[++j])
 		{
 			if (ft_strequ(stock_t->tetri_block[i], stock_t->t_base[j]))
 			{
@@ -123,12 +121,10 @@ t_tetri		*ft_parsing(t_tetri *stock_t, int set_order)
 				set_order++;
 				break ;
 			}
-			j++;
 		}
 		if (match != 1)
 			ft_error();
-		i++;
 	}
 	ft_sqdel(&stock_t->tetri_block);
-	return(stock_t);
+	return (stock_t);
 }

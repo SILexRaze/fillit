@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@41.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/15 14:21:25 by vifonne           #+#    #+#             */
-/*   Updated: 2018/11/22 21:48:21 by mabouce          ###   ########.fr       */
+/*   Updated: 2018/11/23 03:55:36 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,15 @@ t_tetri	*ft_main_parsing(char **av, t_tetri *stock_t)
 	ft_cut_to_tetri(stock_t->tetri_block);
 	ft_parsing(stock_t, 0);
 	return (stock_t);
+}
+
+void	ft_maincheck(char *str)
+{
+	ft_check_char(str);
+	ft_check_end_input(str);
+	ft_check_dim(str, -1, 1, 0);
+	ft_check_dim2(str);
+	ft_check_input(str);
 }
 
 int		main(int ac, char **av)

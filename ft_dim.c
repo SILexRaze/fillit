@@ -6,35 +6,25 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 15:28:43 by vifonne           #+#    #+#             */
-/*   Updated: 2018/11/22 16:09:15 by vifonne          ###   ########.fr       */
+/*   Updated: 2018/11/23 04:05:14 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-#include <stdio.h>
 
-int		ft_check_dim(char *str)
+int		ft_check_dim(char *str, int i, int n, int x)
 {
 	char	**tab;
-	int		i;
 	int		j;
-	int		x;
-	int		n;
 
-	i = 0;
-	n = 1;
-	x = 0;
 	if (!(tab = ft_strsplit(str, 10)))
 		ft_error();
-	while (tab[i])
+	while (tab[++i])
 	{
-		j = 0;
-		while(tab[i][j] != '\0')
-		{
+		j = -1;
+		while (tab[i][++j] != '\0')
 			if (tab[i][j] == '#')
 				x++;
-			j++;
-		}
 		if (j != 4)
 			ft_error();
 		if (n % 4 == 0 && i != 0 && x == 4)
@@ -44,7 +34,6 @@ int		ft_check_dim(char *str)
 		}
 		else if (n % 4 == 0 && i != 0 && x != 4)
 			ft_error();
-		i++;
 		n++;
 	}
 	return (1);

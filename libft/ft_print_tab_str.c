@@ -6,7 +6,7 @@
 /*   By: mabouce <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 17:27:44 by mabouce           #+#    #+#             */
-/*   Updated: 2018/11/22 16:06:37 by vifonne          ###   ########.fr       */
+/*   Updated: 2018/11/23 04:04:34 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ void	ft_print_tab_str(char **tab)
 	while (tab[i])
 	{
 		ft_putstr(tab[i]);
-		//ft_putchar('\n');
 		ft_putchar('\n');
 		i++;
 	}

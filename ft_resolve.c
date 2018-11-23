@@ -6,13 +6,11 @@
 /*   By: mabouce <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 09:27:27 by mabouce           #+#    #+#             */
-/*   Updated: 2018/11/22 21:50:41 by mabouce          ###   ########.fr       */
+/*   Updated: 2018/11/23 04:05:09 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-
-#include <stdio.h>
 
 int		ft_count_tetri(t_tetri *stock_tetri)
 {
@@ -35,7 +33,6 @@ void	ft_set_square(t_tetri *stock_t, int sizeplus)
 	int i;
 
 	edge = ft_calc_edge(stock_t, sizeplus);
-
 	if (!(stock_t->square = (char **)malloc(sizeof(char *) * (edge + 1))))
 		ft_error();
 	stock_t->square[edge] = 0;
@@ -57,7 +54,7 @@ int		ft_backtrack(t_tetri *stock_t, int pcs, int edge)
 
 	x = 0;
 	y = 0;
-	if(pcs == ft_count_tetri(stock_t))
+	if (pcs == ft_count_tetri(stock_t))
 		return (1);
 	while (y < edge)
 	{
@@ -69,7 +66,7 @@ int		ft_backtrack(t_tetri *stock_t, int pcs, int edge)
 				if (ft_backtrack(stock_t, pcs + 1, edge))
 					return (1);
 			}
-			ft_del_tetri_in_sq(stock_t->square, pcs +'A');
+			ft_del_tetri_in_sq(stock_t->square, pcs + 'A');
 			x++;
 		}
 		y++;
