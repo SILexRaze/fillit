@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/15 13:41:41 by vifonne           #+#    #+#             */
-/*   Updated: 2018/11/23 14:42:14 by mabouce          ###   ########.fr       */
+/*   Updated: 2018/11/23 14:56:01 by mabouce          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void			ft_resolve(t_tetri *stock_tetri);
 void			ft_cut_to_tetri(char **tetri);
 void			ft_set_stock_to_zero(t_tetri *stock_tetri);
 void			ft_error(void);
-void			ft_error_str(char *str);
+void			ft_error_str(char **str);
 void			ft_error_tab(char **str);
 void			ft_error_tab_str(char **str, char *str2);
 void			ft_error_struct(t_tetri *stock_t);

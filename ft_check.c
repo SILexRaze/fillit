@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 12:15:34 by vifonne           #+#    #+#             */
-/*   Updated: 2018/11/23 03:51:37 by vifonne          ###   ########.fr       */
+/*   Updated: 2018/11/23 14:57:19 by mabouce          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	ft_check_char(char *str)
 	while (str[i])
 	{
 		if (!ft_ischar(str[i]) && str[i] != '\n')
-			ft_error_str(str);
+			ft_error_str(&str);
 		i++;
 	}
 }
@@ -40,9 +40,9 @@ void	ft_check_end_input(char *str)
 	while (str[i])
 		i++;
 	if (str[i - 1] != '\n')
-		ft_error_str(str);
+		ft_error_str(&str);
 	if (str[i - 1] == '\n' && str[i - 2] == '\n')
-		ft_error_str(str);
+		ft_error_str(&str);
 }
 
 int		ft_count_nb_line(char *str)
@@ -82,10 +82,10 @@ void	ft_check_input(char *str)
 			x = 0;
 		}
 		else if (x > 4)
-			ft_error_str(str);
+			ft_error_str(&str);
 	}
 	if ((nbline + 1) % 5 != 0)
-		ft_error_str(str);
+		ft_error_str(&str);
 	if (nbline != ft_count_nb_line(str))
-		ft_error_str(str);
+		ft_error_str(&str);
 }

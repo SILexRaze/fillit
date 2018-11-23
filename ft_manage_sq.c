@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 13:28:09 by vifonne           #+#    #+#             */
-/*   Updated: 2018/11/23 14:20:05 by mabouce          ###   ########.fr       */
+/*   Updated: 2018/11/23 14:49:11 by mabouce          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int		ft_put_tetri_in_sq(t_tetri *stock_t, int x, int y, int pcs)
 {
 	stock_t->i = 0;
 	if (!(stock_t->base = ft_init_tetri_base_for_put()))
-		ft_error();
+		ft_error_struct(stock_t);
 	while (stock_t->base[stock_t->tab[0][pcs]][stock_t->i]
 			&& y < stock_t->edge && x >= 0)
 	{

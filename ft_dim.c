@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 15:28:43 by vifonne           #+#    #+#             */
-/*   Updated: 2018/11/23 14:46:40 by mabouce          ###   ########.fr       */
+/*   Updated: 2018/11/23 14:58:04 by mabouce          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int		ft_check_dim(char *str, int i, int n, int x)
 	int		j;
 
 	if (!(tab = ft_strsplit(str, 10)))
-		ft_error_str(str);
+		ft_error_str(&str);
 	while (tab[++i])
 	{
 		j = -1;
@@ -52,7 +52,7 @@ int		ft_check_dim2(char *str)
 		if (str[j] == '\n' && str[j + 1] == '\n')
 		{
 			if (i != 19)
-				ft_error_str(str);
+				ft_error_str(&str);
 			else
 				i = -1;
 		}
