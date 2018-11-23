@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/15 13:41:41 by vifonne           #+#    #+#             */
-/*   Updated: 2018/11/23 15:06:19 by mabouce          ###   ########.fr       */
+/*   Updated: 2018/11/23 15:34:45 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,9 @@ void			ft_error_tab_str(char ***str, char **str2);
 void			ft_error_struct(t_tetri *stock_t);
 void			ft_error_struct_tab(t_tetri *stock_t, char ***tab);
 void			ft_error_struct_str(t_tetri *stock_t, char **str);
-void			ft_error_struct_str_str(t_tetri *stock_t, char **str, 
+void			ft_error_struct_str_str(t_tetri *stock_t, char **str,
 				char **str2);
-void			ft_error_struct_str_str_str(t_tetri *stock_t, char **str, 
+void			ft_error_struct_str_str_str(t_tetri *stock_t, char **str,
 				char **str2, char **str3);
 void			ft_sqdel(char ***square);
 void			ft_maincheck(char *str);
