@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/15 13:40:35 by vifonne           #+#    #+#             */
-/*   Updated: 2018/11/23 15:04:04 by mabouce          ###   ########.fr       */
+/*   Updated: 2018/11/26 15:30:16 by mabouce          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,17 @@ t_tetri		*ft_read_file(t_tetri *stock_t, char *fn)
 
 	i = 0;
 	if (!(stock_t->tetri = ft_strnew(0)))
-		ft_error_struct_str(stock_t, &fn);
+		ft_error_struct(stock_t);
 	if (!(fd = open(fn, O_RDONLY)))
-		ft_error_struct_str_str(stock_t, &fn, &stock_t->tetri);
+		ft_error_struct_str(stock_t, &stock_t->tetri);
 	while ((ret = get_next_line(fd, &line)))
 	{
 		if (ret < 0 || ++i > 129)
-			ft_error_struct_str_str_str(stock_t, &fn, &stock_t->tetri, &line);
+			ft_error_struct_str(stock_t, &stock_t->tetri);
 		if (!(line = ft_strdjoin(line, "\n")))
-			ft_error_struct_str_str_str(stock_t, &fn, &stock_t->tetri, &line);
+			ft_error_struct_str_str(stock_t, &stock_t->tetri, &line);
 		if (!(stock_t->tetri = ft_strdjoin(stock_t->tetri, line)))
-			ft_error_struct_str_str_str(stock_t, &fn, &stock_t->tetri, &line);
+			ft_error_struct_str_str(stock_t, &stock_t->tetri, &line);
 		ft_strdel(&line);
 	}
 	close(fd);

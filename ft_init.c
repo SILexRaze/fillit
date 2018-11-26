@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 13:17:45 by vifonne           #+#    #+#             */
-/*   Updated: 2018/11/23 12:01:18 by mabouce          ###   ########.fr       */
+/*   Updated: 2018/11/26 15:27:09 by mabouce          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 char	**ft_init_tetri_base(void)
 {
-	char	**tab;
+	static char	**tab;
 
 	if (!(tab = (char **)malloc(sizeof(char *) * 20)))
-		return (0);
+		return (NULL);
 	tab[0] = "####";
 	tab[1] = "#...#...#...#";
 	tab[2] = "##..##";
