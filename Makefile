@@ -6,7 +6,7 @@
 #    By: vifonne <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 19:05:19 by vifonne           #+#    #+#              #
-#    Updated: 2018/11/23 15:42:34 by vifonne          ###   ########.fr        #
+#    Updated: 2018/11/26 13:10:00 by vifonne          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,7 @@ INCLUDES	=		includes/
 OBJ			=		$(SRCS:.c=.o)
 
 CC			=		gcc -Wall -Wextra -Werror
+CCS			=		gcc -fsanitize=address -Wall -Wextra -Werror
 
 NAME		=		fillit
 
@@ -47,6 +48,13 @@ $(NAME): $(OBJ) $(SRCS)
 	make -C libft/
 	@echo "$(_YELLOW)"
 	$(CC) $(SRCS) -o $(NAME) -I libft/includes -I $(INCLUDES) -L libft/ -lft
+
+san:
+	@echo "$(_CYAN)"
+	make -C libft/
+	@echo "$(_YELLOW)"
+	$(CCS) $(SRCS) -o $(NAME) -I libft/includes -I $(INCLUDES) -L libft/ -lft
+
 
 clean:
 	@echo "$(_RED)"
